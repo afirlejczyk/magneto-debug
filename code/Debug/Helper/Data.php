@@ -236,4 +236,14 @@ class Magneto_Debug_Helper_Data extends Mage_Core_Helper_Abstract
     {
         return Mage::getStoreConfig('debug/options/debug_panel_' . strtolower($panelTitle) . '_visibility');
     }
+
+	/**
+	 * Get default store Id
+	 *
+	 * @return int
+	 */
+	public function getDefaultStoreId()
+	{
+		return Mage::app()->getStore()->getWebsite(true)->getDefaultStore()->getId();
+	}
 }

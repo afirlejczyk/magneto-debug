@@ -18,7 +18,7 @@ class Magneto_Debug_Block_Blocks extends Magneto_Debug_Block_Abstract
     {
         return Mage::getUrl('debug/index/viewBlock', array(
             'block' => $blockClass,
-            '_store' => self::DEFAULT_STORE_ID,
+            '_store' => $this->_getDefaultStoreId(),
             '_nosid' => true));
     }
 
@@ -26,7 +26,7 @@ class Magneto_Debug_Block_Blocks extends Magneto_Debug_Block_Abstract
     {
         return Mage::getUrl('debug/index/viewTemplate', array(
             '_query' => array('template' => $template),
-            '_store' => self::DEFAULT_STORE_ID,
+            '_store' => $this->_getDefaultStoreId(),
             '_nosid' => true));
     }
 
@@ -37,4 +37,13 @@ class Magneto_Debug_Block_Blocks extends Magneto_Debug_Block_Abstract
         }
     }
 
+	/**
+	 * Get default store id
+	 */
+	protected function _getDefaultStoreId()
+	{
+		/** @var Magneto_Debug_Helper_Data $helper */
+		$helper = Mage::helper('debug');
+		return $helper->getDefaultStoreId();
+	}
 }
